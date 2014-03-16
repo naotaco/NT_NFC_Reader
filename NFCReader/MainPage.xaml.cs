@@ -76,8 +76,9 @@ namespace NFCReader
                         sb.Append("   sonyRecord ");
                         sb.Append(ii);
                         sb.Append(": ");
+                        sb.Append(System.Environment.NewLine);
+                        sb.Append("    ");
                         sb.Append(s);
-                        sb.Append(" ---");
                         sb.Append(System.Environment.NewLine);
                         ii++;
                     }
