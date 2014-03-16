@@ -115,7 +115,7 @@ namespace SonyNdefUtils
                 recordPointer += record.payloadLength;
 
                 // store payload as text
-                record.payload = Encoding.UTF8.GetString(payload, 0, record.payloadLength);
+                record.payload = ForceConvertToString(payload);
 
 
                 // try to parse the payload as sony's NDEF payload
@@ -124,6 +124,7 @@ namespace SonyNdefUtils
                     var parsedPayload = this.ParseSonyNdefPayload(payload);
                     record.SSID = parsedPayload.SSID;
                     record.Password = parsedPayload.Password;
+                    record.SonyPayload = parsedPayload.SonyPayload;
                 }
                 catch
                 {
@@ -146,7 +147,7 @@ namespace SonyNdefUtils
         {
             var ret = new SonyNdefRecord();
             StringBuilder sb = new StringBuilder();
-
+            
             int pointer = 0;
             int contentCount = 0;
 
@@ -170,11 +171,14 @@ namespace SonyNdefUtils
 
                 if (valueText.Length < 2)
                 {
-                    Debug.WriteLine("Value: 0x" + payload[pointer].ToString("x"));
+                    string s = "0x" + payload[pointer].ToString("x");
+                    Debug.WriteLine("value: " + s);
+                    ret.SonyPayload.Add(s);
                 }
                 else
                 {
                     Debug.WriteLine("value: " + valueText);
+                    ret.SonyPayload.Add(valueText);
                 }
 
                 if (id == 0x1000)
@@ -211,7 +215,28 @@ namespace SonyNdefUtils
         {
             StringBuilder sb = new StringBuilder();
 
+            bool isLastByteAscii = false;
 
+            foreach (Byte b in data)
+            {
+                // if ascii
+                if ((int)b >= 0x20 && (int)b <= 0x7e)
+                {
+                    sb.Append((char)b);
+                    isLastByteAscii = true;
+                }
+                else
+                {
+                    if (isLastByteAscii)
+                    {
+                        // if not ascii, add newline
+                        sb.Append(System.Environment.NewLine);
+                    }
+
+                    isLastByteAscii = false;
+                }
+                
+            }
 
 
             return sb.ToString();

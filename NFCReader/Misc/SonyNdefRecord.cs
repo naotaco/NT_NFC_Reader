@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace SonyNdefUtils
@@ -66,6 +67,12 @@ namespace SonyNdefUtils
             set;
         }
 
+        public List<String> SonyPayload
+        {
+            get;
+            set;
+        }
+
         public SonyNdefRecord()
         {
             ndefHeader = (byte)0;
@@ -78,6 +85,7 @@ namespace SonyNdefUtils
             SSID = "";
             Password = "";
             IsIdExist = false;
+            SonyPayload = new List<string>();
         }
 
         public void dump()
@@ -91,6 +99,10 @@ namespace SonyNdefUtils
             Debug.WriteLine("payload: " + payload);
             Debug.WriteLine("SSID: " + SSID);
             Debug.WriteLine("Password: " + Password);
+            foreach (String s in SonyPayload)
+            {
+                Debug.WriteLine("SonyRecord: " + s);
+            }
         }
 
 
