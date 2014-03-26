@@ -24,6 +24,9 @@
             <TextBlock Name="PayloadTitle"  Text="{Binding Path=LocalizedResources.Payload, Source={StaticResource LocalizedStrings}}"
                        Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
             <TextBlock Name="Payload_01"  TextWrapping="Wrap" Margin="{StaticResource PhoneMargin}"/>
+            <TextBlock Name="SonyPayloadTitle"  Text="{Binding Path=LocalizedResources.SonyRecordTitle, Source={StaticResource LocalizedStrings}}"
+                       Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <TextBlock Name="SonyPayload"  TextWrapping="Wrap" Margin="{StaticResource PhoneMargin}"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -52,52 +52,34 @@ namespace NFCReader
             var parser = new SonyNdefParser(message);
             List<SonyNdefRecord> ndefRecords = new List<SonyNdefRecord>();
             ndefRecords = parser.Parse();
+            InitializePivot();
+
+            if (ndefRecords.Count == 0)
+            {
+                Dispatcher.BeginInvoke(() =>
+                {
+                    // there's no NDEF record.
+                    NFCMessage.Text = AppResources.NFC_Message_error;
+                });
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(() =>
+                {
+                    // there's no NDEF record.
+                    NFCMessage.Text = AppResources.NFC_Message_detected;
+                });
+            }
 
             int i = 0;
 
             foreach (SonyNdefRecord r in ndefRecords)
             {
-                var sb = new StringBuilder();
-                sb.Append("===== record [");
-                sb.Append(i);
-                sb.Append("] =====");
-                sb.Append(System.Environment.NewLine);
-                sb.Append("id: ");
-                sb.Append(r.id);
-                sb.Append(System.Environment.NewLine);
-                sb.Append("type: ");
-                sb.Append(r.type);
-                sb.Append(System.Environment.NewLine);
-                if (r.SonyPayload.Count > 0)
-                {
-                    int ii = 0;
-                    foreach (String s in r.SonyPayload)
-                    {
-                        sb.Append("   sonyRecord ");
-                        sb.Append(ii);
-                        sb.Append(": ");
-                        sb.Append(System.Environment.NewLine);
-                        sb.Append("    ");
-                        sb.Append(s);
-                        sb.Append(System.Environment.NewLine);
-                        ii++;
-                    }
-                }
-                sb.Append("  --- payload raw data start ---");
-                sb.Append(System.Environment.NewLine);
-                sb.Append(r.payload);
-                sb.Append(System.Environment.NewLine);
-                sb.Append("  --- payload raw data end   ---");
-                sb.Append(System.Environment.NewLine);
+
                 i++;
 
                 Dispatcher.BeginInvoke(() =>
                 { 
-                    var textBlock = new TextBlock 
-                    { 
-                        Text = sb.ToString(),
-                    };
-
                     var newPivotItem = new PivotItem();
 
                     var content = new NdefPivotItem(i, r);
@@ -105,15 +87,24 @@ namespace NFCReader
 
                    // ValuesPanel.Children.Add(textBlock);
                     MyPivot.Items.Add(newPivotItem);
-                }
-                
-                );
-               
                     
+                });
             }
 
-            
+        }
 
+        private void InitializePivot()
+        {
+            
+            Dispatcher.BeginInvoke(() => 
+            {   
+                if (MyPivot.Items.Count > 1)
+                {
+                    int count = 1;
+                    MyPivot.Items.RemoveAt(count);
+                    count++;
+                }
+            });
 
         }
     }

@@ -97,6 +97,25 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Detected NFC tag.
+        ///To see detail, swipe right..
+        /// </summary>
+        public static string NFC_Message_detected {
+            get {
+                return ResourceManager.GetString("NFC_Message_detected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No NDEF record has found..
+        /// </summary>
+        public static string NFC_Message_error {
+            get {
+                return ResourceManager.GetString("NFC_Message_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Touch to your tag..
         /// </summary>
         public static string NFC_Message_mainPage {
@@ -106,7 +125,7 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Payload.
+        ///   Looks up a localized string similar to Payload (Force converted as ASCII).
         /// </summary>
         public static string Payload {
             get {
@@ -129,6 +148,15 @@ namespace NFCReader.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Records of Sony&apos;s camera.
+        /// </summary>
+        public static string SonyRecordTitle {
+            get {
+                return ResourceManager.GetString("SonyRecordTitle", resourceCulture);
             }
         }
         

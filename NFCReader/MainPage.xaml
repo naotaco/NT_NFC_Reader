@@ -38,7 +38,8 @@
                                 <RowDefinition Height="*"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="{Binding Path=LocalizedResources.NFC_Message_mainPage, Source={StaticResource LocalizedStrings}}"/>
+                            <TextBlock Grid.Row="0" Name="NFCMessage"
+                                       Text="{Binding Path=LocalizedResources.NFC_Message_mainPage, Source={StaticResource LocalizedStrings}}"/>
                             <TextBlock Grid.Row="1" Text="" Visibility="Collapsed"/>
                         </Grid>
 

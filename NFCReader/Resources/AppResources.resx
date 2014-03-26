@@ -140,8 +140,18 @@
   <data name="ID" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="NFC_Message_detected" xml:space="preserve">
+    <value>Detected NFC tag.
+To see detail, swipe right.</value>
+  </data>
+  <data name="NFC_Message_error" xml:space="preserve">
+    <value>No NDEF record has found.</value>
+  </data>
   <data name="Payload" xml:space="preserve">
-    <value>Payload</value>
+    <value>Payload (Force converted as ASCII)</value>
+  </data>
+  <data name="SonyRecordTitle" xml:space="preserve">
+    <value>Records of Sony's camera</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
