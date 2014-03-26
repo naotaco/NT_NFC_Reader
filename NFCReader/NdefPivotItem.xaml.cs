@@ -13,15 +13,18 @@ namespace NFCReader
 {
     public partial class NdefPivotItem : UserControl
     {
-        public NdefPivotItem(SonyNdefUtils.SonyNdefRecord record)
+        public NdefPivotItem(int number, SonyNdefUtils.SonyNdefRecord record)
         {
             InitializeComponent();
-            setRecord(record);
+            setRecord(number, record);
         }
 
-        public void setRecord(SonyNdefUtils.SonyNdefRecord record)
+        public void setRecord(int number, SonyNdefUtils.SonyNdefRecord record)
         {
-            txtAlertName.Text = record.type;
+            PivotItemTitle.Text = "Record " + number;
+            ID.Text = record.id;
+            Type.Text = record.type;
+            Payload_01.Text = record.payload;
         }
 
     }

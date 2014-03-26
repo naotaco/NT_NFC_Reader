@@ -100,7 +100,7 @@ namespace NFCReader
 
                     var newPivotItem = new PivotItem();
 
-                    var content = new NdefPivotItem(r);
+                    var content = new NdefPivotItem(i, r);
                     newPivotItem.Content = content;
 
                    // ValuesPanel.Children.Add(textBlock);

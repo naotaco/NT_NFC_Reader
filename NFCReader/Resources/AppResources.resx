@@ -137,4 +137,13 @@
   <data name="NFC_Message_mainPage" xml:space="preserve">
     <value>Touch to your tag.</value>
   </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Payload" xml:space="preserve">
+    <value>Payload</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

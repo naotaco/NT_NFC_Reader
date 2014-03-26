@@ -88,11 +88,29 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Touch to your tag..
         /// </summary>
         public static string NFC_Message_mainPage {
             get {
                 return ResourceManager.GetString("NFC_Message_mainPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payload.
+        /// </summary>
+        public static string Payload {
+            get {
+                return ResourceManager.GetString("Payload", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace NFCReader.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
     }
