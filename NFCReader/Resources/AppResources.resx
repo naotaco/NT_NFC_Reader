@@ -156,4 +156,7 @@ To see detail, swipe right.</value>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="TypeNameFormat" xml:space="preserve">
+    <value>Type Name Format</value>
+  </data>
 </root>

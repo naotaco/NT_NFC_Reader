@@ -22,7 +22,7 @@
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,10,0,8">
             <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
- Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+                Style="{StaticResource PhoneTextNormalStyle}" Margin="{StaticResource PhoneVerticalMargin}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
         </StackPanel>
 
 

@@ -34,6 +34,37 @@ namespace NFCReader
                 ID.Text = record.id;
             }
 
+            // Type name format
+            string tnf = "";
+            switch (record.typeNameFormat)
+            {
+                case 0x0:
+                    tnf = "Empty";
+                    break;
+                case 0x1:
+                    tnf = "NFC Forum well-known type";
+                    break;
+                case 0x2:
+                    tnf = "MIME, Media-type (RFC 2046)";
+                    break;
+                case 0x3:
+                    tnf = "Absolute URI (RFC 3986)";
+                    break;
+                case 0x4:
+                    tnf = "NFC Forum external type";
+                    break;
+                case 0x5:
+                    tnf = "Unknown";
+                    break;
+                case 0x6:
+                    tnf = "Unchanged";
+                    break;
+                case 0x7:
+                    tnf = "Reserved";
+                    break;
+            }
+            TNF.Text = "0x0" + record.typeNameFormat.ToString("x") + " (" + tnf + ")";
+
             if (record.type.Length < 1)
             {
                 TypeTitle.Visibility = System.Windows.Visibility.Collapsed;

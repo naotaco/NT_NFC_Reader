@@ -168,5 +168,14 @@ namespace NFCReader.Resources {
                 return ResourceManager.GetString("Type", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type Name Format.
+        /// </summary>
+        public static string TypeNameFormat {
+            get {
+                return ResourceManager.GetString("TypeNameFormat", resourceCulture);
+            }
+        }
     }
 }

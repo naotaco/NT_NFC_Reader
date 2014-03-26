@@ -43,7 +43,7 @@ namespace NFCReader
             }
 
             _subscriptionIdNdef = _proximitiyDevice.SubscribeForMessage("NDEF", NFCMessageReceivedHandler);
-            
+
 
         }
 
@@ -79,15 +79,15 @@ namespace NFCReader
                 i++;
 
                 Dispatcher.BeginInvoke(() =>
-                { 
+                {
                     var newPivotItem = new PivotItem();
 
-                    var content = new NdefPivotItem(i, r);
+                    var content = new NdefPivotItem(MyPivot.Items.Count, r);
                     newPivotItem.Content = content;
 
-                   // ValuesPanel.Children.Add(textBlock);
+                    // ValuesPanel.Children.Add(textBlock);
                     MyPivot.Items.Add(newPivotItem);
-                    
+
                 });
             }
 
@@ -95,14 +95,12 @@ namespace NFCReader
 
         private void InitializePivot()
         {
-            
-            Dispatcher.BeginInvoke(() => 
-            {   
-                if (MyPivot.Items.Count > 1)
+
+            Dispatcher.BeginInvoke(() =>
+            {
+                while (MyPivot.Items.Count > 1)
                 {
-                    int count = 1;
-                    MyPivot.Items.RemoveAt(count);
-                    count++;
+                    MyPivot.Items.RemoveAt(1);
                 }
             });
 

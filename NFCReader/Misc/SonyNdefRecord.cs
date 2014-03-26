@@ -25,6 +25,12 @@ namespace SonyNdefUtils
             set;
         }
 
+        public int typeNameFormat
+        {
+            get;
+            set;
+        }
+
         public int idLength
         {
             get;
@@ -79,6 +85,7 @@ namespace SonyNdefUtils
             typeLength = 0;
             payloadLength = 0;
             idLength = 0;
+            typeNameFormat = 0;
             type = "";
             id = "";
             payload = "";
@@ -94,6 +101,7 @@ namespace SonyNdefUtils
             Debug.WriteLine("Type length: " + typeLength);
             Debug.WriteLine("payload length: " + payloadLength);
             Debug.WriteLine("id length: " + idLength);
+            Debug.WriteLine("Type name format: " + typeNameFormat);
             Debug.WriteLine("type: " + type);
             Debug.WriteLine("id: " + id);
             Debug.WriteLine("payload: " + payload);

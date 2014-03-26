@@ -18,6 +18,9 @@
             <TextBlock Name="IDTitle" Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
                        Text="{Binding Path=LocalizedResources.ID, Source={StaticResource LocalizedStrings}}"  />
             <TextBlock Name="ID" Text="" Margin="{StaticResource PhoneMargin}"/>
+            <TextBlock Name="TNFTitle" Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                       Text="{Binding Path=LocalizedResources.TypeNameFormat, Source={StaticResource LocalizedStrings}}"  />
+            <TextBlock Name="TNF" Text="" Margin="{StaticResource PhoneMargin}"/>
             <TextBlock Name="TypeTitle"  Text="{Binding Path=LocalizedResources.Type, Source={StaticResource LocalizedStrings}}" 
                        Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
             <TextBlock Name="Type" Text="" Margin="{StaticResource PhoneMargin}"/>

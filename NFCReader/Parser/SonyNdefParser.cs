@@ -72,6 +72,9 @@ namespace SonyNdefUtils
                     recordPointer += 4;
                 }
 
+                // parse TNF
+                record.typeNameFormat = (record.ndefHeader & 0x07);
+
                 // to check last message
                 if ((0x40 & record.ndefHeader) == 0x40)
                 {
