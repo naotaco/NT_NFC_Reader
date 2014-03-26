@@ -93,12 +93,20 @@ namespace NFCReader
 
                 Dispatcher.BeginInvoke(() =>
                 { 
-                    var textBlock = new TextBlock { 
+                    var textBlock = new TextBlock 
+                    { 
                         Text = sb.ToString(),
-                        
-                };
-                    ValuesPanel.Children.Add(textBlock);
+                    };
+
+                    var newPivotItem = new PivotItem();
+
+                    var content = new NdefPivotItem(r);
+                    newPivotItem.Content = content;
+
+                   // ValuesPanel.Children.Add(textBlock);
+                    MyPivot.Items.Add(newPivotItem);
                 }
+                
                 );
                
                     

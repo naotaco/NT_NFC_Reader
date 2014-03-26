@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="NFCReader.NdefPivotItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    <Grid Margin="0,-50,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="87*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+
+            <TextBlock TextWrapping="Wrap"  VerticalAlignment="Center" Grid.Column="1" Text="Pivot Name1" HorizontalAlignment="Center"  FontSize="26.667" Foreground="#FF121111" FontWeight="Bold" />
+            <Button Name="btnCancel" Height="80" Content="Back" Foreground="#FF0C0B0B" Grid.Column="0" HorizontalAlignment="Right" BorderThickness="0" VerticalAlignment="Center"  Margin="5" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/buttons-small.png"    />
+                </Button.Background>
+            </Button>
+
+
+        </Grid>
+        <StackPanel Grid.Row="2" x:Name="LayoutRoot" Orientation="Vertical" Background="White">
+            <TextBlock Name="txtAlertName"  TextWrapping="Wrap"  Text="This is pivot Item of type 1" Foreground="#FF403E3E" FontSize="48">
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>
