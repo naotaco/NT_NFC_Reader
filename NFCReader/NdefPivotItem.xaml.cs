@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Windows.Input;
 using System.Text;
+using NFCReader.Resources;
 
 namespace NFCReader
 {
@@ -24,15 +25,8 @@ namespace NFCReader
         {
             PivotItemTitle.Text = "Record #" + number;
 
-            if (record.id.Length < 1)
-            {
-                IDTitle.Visibility = System.Windows.Visibility.Collapsed;
-                ID.Visibility = System.Windows.Visibility.Collapsed;
-            }
-            else
-            {
-                ID.Text = record.id;
-            }
+            var idSection = CreateSection(AppResources.ID, record.id);
+            LayoutRoot.Children.Add(idSection);
 
             // Type name format
             string tnf = "";
@@ -63,44 +57,50 @@ namespace NFCReader
                     tnf = "Reserved";
                     break;
             }
-            TNF.Text = "0x0" + record.typeNameFormat.ToString("x") + " (" + tnf + ")";
 
-            if (record.type.Length < 1)
+            var recordTypeSection = CreateSection(AppResources.TypeNameFormat, "0x0" + record.typeNameFormat.ToString("x") + " (" + tnf + ")");
+            LayoutRoot.Children.Add(recordTypeSection);
+
+            var typeSection = CreateSection(AppResources.Type, record.type);
+            LayoutRoot.Children.Add(typeSection);
+
+            var payloadSection = CreateSection(AppResources.Payload, record.payload);
+            LayoutRoot.Children.Add(payloadSection);
+
+            if (record.SonyPayload.Count > 0)
             {
-                TypeTitle.Visibility = System.Windows.Visibility.Collapsed;
-                Type.Visibility = System.Windows.Visibility.Collapsed;
+                var sonyPayloadSection = new Section(AppResources.SonyRecordTitle, record.SonyPayload)
+                 {
+                     Margin = new Thickness(0),
+                 };
+                sonyPayloadSection.Open();
+                LayoutRoot.Children.Add(sonyPayloadSection);
+            }
+           
+
+        }
+
+        private Section CreateSection(String title, String text)
+        {
+            var section = new Section(title, text)
+            {
+                Margin = new Thickness(0),
+            };
+
+            if (text.Length < 1)
+            {
+                section.SetText("(None)");
+                section.Close();
             }
             else
             {
-                Type.Text = record.type;
+                section.Open();
             }
 
-            if (record.payload.Length < 1)
-            {
-                PayloadTitle.Visibility = System.Windows.Visibility.Collapsed;
-                Payload_01.Visibility = System.Windows.Visibility.Collapsed;
-            }
-            else
-            {
-                Payload_01.Text = record.payload;
-            }
-
-            if (record.SonyPayload.Count == 0)
-            {
-                SonyPayloadTitle.Visibility = System.Windows.Visibility.Collapsed;
-                SonyPayload.Visibility = System.Windows.Visibility.Collapsed;
-            }
-            else
-            {
-                var sb = new StringBuilder();
-                foreach (String s in record.SonyPayload)
-                {
-                    sb.Append(s);
-                    sb.Append(System.Environment.NewLine);
-                }
-                SonyPayload.Text = sb.ToString();
-            }
+            return section;
         }
 
     }
+
+    
 }
