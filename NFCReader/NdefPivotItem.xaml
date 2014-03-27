@@ -13,23 +13,25 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" x:Name="LayoutRoot" Orientation="Vertical" Background="{StaticResource PhoneBackgroundBrush}">
-            <TextBlock Name="PivotItemTitle" Text="Record" FontSize="{StaticResource PhoneFontSizeLarge}" />
-            <TextBlock Name="IDTitle" Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Grid.Row="1" x:Name="LayoutRoot" Orientation="Vertical" Background="{StaticResource PhoneBackgroundBrush}">
+                <TextBlock Name="PivotItemTitle" Text="Record" FontSize="{StaticResource PhoneFontSizeLarge}" />
+                <TextBlock Name="IDTitle" Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
                        Text="{Binding Path=LocalizedResources.ID, Source={StaticResource LocalizedStrings}}"  />
-            <TextBlock Name="ID" Text="" Margin="{StaticResource PhoneMargin}"/>
-            <TextBlock Name="TNFTitle" Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                <TextBlock Name="ID" Text="" Margin="{StaticResource PhoneMargin}"/>
+                <TextBlock Name="TNFTitle" Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"
                        Text="{Binding Path=LocalizedResources.TypeNameFormat, Source={StaticResource LocalizedStrings}}"  />
-            <TextBlock Name="TNF" Text="" Margin="{StaticResource PhoneMargin}"/>
-            <TextBlock Name="TypeTitle"  Text="{Binding Path=LocalizedResources.Type, Source={StaticResource LocalizedStrings}}" 
+                <TextBlock Name="TNF" Text="" Margin="{StaticResource PhoneMargin}"/>
+                <TextBlock Name="TypeTitle"  Text="{Binding Path=LocalizedResources.Type, Source={StaticResource LocalizedStrings}}" 
                        Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
-            <TextBlock Name="Type" Text="" Margin="{StaticResource PhoneMargin}"/>
-            <TextBlock Name="PayloadTitle"  Text="{Binding Path=LocalizedResources.Payload, Source={StaticResource LocalizedStrings}}"
+                <TextBlock Name="Type" Text="" Margin="{StaticResource PhoneMargin}"/>
+                <TextBlock Name="PayloadTitle"  Text="{Binding Path=LocalizedResources.Payload, Source={StaticResource LocalizedStrings}}"
                        Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
-            <TextBlock Name="Payload_01"  TextWrapping="Wrap" Margin="{StaticResource PhoneMargin}"/>
-            <TextBlock Name="SonyPayloadTitle"  Text="{Binding Path=LocalizedResources.SonyRecordTitle, Source={StaticResource LocalizedStrings}}"
+                <TextBlock Name="Payload_01"  TextWrapping="Wrap" Margin="{StaticResource PhoneMargin}"/>
+                <TextBlock Name="SonyPayloadTitle"  Text="{Binding Path=LocalizedResources.SonyRecordTitle, Source={StaticResource LocalizedStrings}}"
                        Margin="{StaticResource PhoneVerticalMargin}" Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
-            <TextBlock Name="SonyPayload"  TextWrapping="Wrap" Margin="{StaticResource PhoneMargin}"/>
-        </StackPanel>
+                <TextBlock Name="SonyPayload"  TextWrapping="Wrap" Margin="{StaticResource PhoneMargin}"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

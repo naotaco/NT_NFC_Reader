@@ -38,7 +38,7 @@ namespace NFCReader
 
             if (_proximitiyDevice == null)
             {
-                Debug.WriteLine("It seems this is not NFC available device");
+                Debug.WriteLine("It seems this is not NFC-available device");
                 return;
             }
 
@@ -80,7 +80,10 @@ namespace NFCReader
 
                 Dispatcher.BeginInvoke(() =>
                 {
-                    var newPivotItem = new PivotItem();
+                    var newPivotItem = new PivotItem()
+                    {
+                        Margin = new Thickness(12, 0, 12, 0),
+                    };
 
                     var content = new NdefPivotItem(MyPivot.Items.Count, r);
                     newPivotItem.Content = content;
