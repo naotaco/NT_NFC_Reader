@@ -106,6 +106,15 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The text has been copied to your clipboard!.
+        /// </summary>
+        public static string Message_Copied {
+            get {
+                return ResourceManager.GetString("Message_Copied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detected NFC tag.
         ///To see detail, swipe right..
         /// </summary>

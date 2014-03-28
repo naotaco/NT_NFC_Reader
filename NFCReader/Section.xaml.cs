@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Diagnostics;
+using NFCReader.Resources;
 
 namespace NFCReader
 {
@@ -113,6 +115,9 @@ namespace NFCReader
         private void SetTextToClipboard(object sender, System.Windows.Input.GestureEventArgs e)
         {
             var textBlock = sender as TextBlock;
+            Debug.WriteLine("tap: " + textBlock.Text);
+            Clipboard.SetText(textBlock.Text);
+            MessageBox.Show(AppResources.Message_Copied + System.Environment.NewLine + System.Environment.NewLine + textBlock.Text);
         }
     }
 }
