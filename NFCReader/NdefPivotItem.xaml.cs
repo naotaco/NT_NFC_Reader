@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using System.Windows.Input;
 using System.Text;
 using NFCReader.Resources;
+using System.Diagnostics;
 
 namespace NFCReader
 {
@@ -77,7 +78,10 @@ namespace NFCReader
                 LayoutRoot.Children.Add(sonyPayloadSection);
             }
 
-            var hexPayloadSection = CreateSection(AppResources.HexPayload, CreateStringFromByteCollection(record.RawPayload));
+            var hexPayloadSection = new Section(AppResources.HexPayload, CreateHexAsciiStrigCorrection(record.RawPayload))
+            {
+                Margin = new Thickness(0),
+            };
             hexPayloadSection.Close();
             LayoutRoot.Children.Add(hexPayloadSection);
            
@@ -118,6 +122,49 @@ namespace NFCReader
             }
 
             return sb.ToString();
+        }
+
+        private List<string> CreateHexAsciiStrigCorrection(List<byte> input)
+        {
+            int count = 1;
+            var hex = new StringBuilder();
+            var ascii = new StringBuilder();
+            var ret = new List<string>();
+
+            foreach (byte b in input)
+            {
+                //hex
+                if (b < 16)
+                {
+                    hex.Append('0');
+                }
+                hex.Append(Convert.ToString(b, 16));
+                hex.Append(" ");
+
+                // ascii
+                // if ascii
+                if ((int)b >= 0x20 && (int)b <= 0x7e)
+                {
+                    ascii.Append((char)b);
+                }
+                else
+                {
+                    ascii.Append(".");
+                }
+
+                if (count % 8 == 0)
+                {
+                    string s = hex.ToString() + " " + ascii.ToString() + System.Environment.NewLine;
+                    Debug.WriteLine(s);
+                    ret.Add(s);
+                    hex.Clear();
+                    ascii.Clear();
+                }
+
+                count++;
+            }
+
+            return ret;
         }
 
     }
