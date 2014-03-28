@@ -28,7 +28,9 @@ namespace NFCReader
 
 
             Title.Title = title;
-            TextList.Children.Add(CreateTextBlock(text));
+            var block = CreateTextBlock(text);
+            block.Tap += SetTextToClipboard;
+            TextList.Children.Add(block);
         }
 
         public Section(String title, List<String> text)
@@ -37,14 +39,18 @@ namespace NFCReader
             Title.Title = title;
             foreach (string s in text)
             {
-                TextList.Children.Add(CreateTextBlock(s));
+                var block = CreateTextBlock(s);
+                block.Tap += SetTextToClipboard;
+                TextList.Children.Add(block);
             }
         }
 
         public void SetText(String s)
         {
             TextList.Children.Clear();
-            TextList.Children.Add(CreateTextBlock(s));
+            var block = CreateTextBlock(s);
+            block.Tap += SetTextToClipboard;
+            TextList.Children.Add(block);
         }
 
         public void Open()
@@ -61,8 +67,8 @@ namespace NFCReader
         {   
             InitializeComponent();
 
+            Title.Tap += LayoutRoot_Tap;
 
-            LayoutRoot.Tap += LayoutRoot_Tap;
             Close();
         }
 
@@ -97,10 +103,16 @@ namespace NFCReader
             var block = new TextBlock()
             {
                 Text = text,
+                TextWrapping = System.Windows.TextWrapping.Wrap,
                 Margin = new Thickness(48, 6, 12, 6),
             };
 
             return block;
+        }
+
+        private void SetTextToClipboard(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            var textBlock = sender as TextBlock;
         }
     }
 }

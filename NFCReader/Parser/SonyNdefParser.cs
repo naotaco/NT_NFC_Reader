@@ -117,6 +117,8 @@ namespace SonyNdefUtils
                 Array.Copy(raw, recordPointer, payload, 0, record.payloadLength);
                 recordPointer += record.payloadLength;
 
+                record.RawPayload = new List<byte>(payload);
+
                 // store payload as text
                 record.payload = ForceConvertToString(payload);
 

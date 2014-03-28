@@ -76,6 +76,10 @@ namespace NFCReader
                 sonyPayloadSection.Open();
                 LayoutRoot.Children.Add(sonyPayloadSection);
             }
+
+            var hexPayloadSection = CreateSection(AppResources.HexPayload, CreateStringFromByteCollection(record.RawPayload));
+            hexPayloadSection.Close();
+            LayoutRoot.Children.Add(hexPayloadSection);
            
 
         }
@@ -98,6 +102,22 @@ namespace NFCReader
             }
 
             return section;
+        }
+
+        private string CreateStringFromByteCollection(List<byte> input)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in input)
+            {
+                if (b < 16)
+                {
+                    sb.Append('0');
+                }
+                sb.Append(Convert.ToString(b, 16));
+                sb.Append(" ");
+            }
+
+            return sb.ToString();
         }
 
     }

@@ -159,4 +159,7 @@ To see detail, swipe right.</value>
   <data name="TypeNameFormat" xml:space="preserve">
     <value>Type Name Format</value>
   </data>
+  <data name="HexPayload" xml:space="preserve">
+    <value>Payload (Hex)</value>
+  </data>
 </root>

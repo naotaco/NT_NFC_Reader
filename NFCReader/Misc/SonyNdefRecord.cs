@@ -79,6 +79,12 @@ namespace SonyNdefUtils
             set;
         }
 
+        public List<byte> RawPayload
+        {
+            get;
+            set;
+        }
+
         public SonyNdefRecord()
         {
             ndefHeader = (byte)0;
@@ -93,6 +99,7 @@ namespace SonyNdefUtils
             Password = "";
             IsIdExist = false;
             SonyPayload = new List<string>();
+            RawPayload = new List<byte>();
         }
 
         public void dump()

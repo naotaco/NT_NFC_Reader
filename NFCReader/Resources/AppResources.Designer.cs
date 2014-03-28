@@ -88,6 +88,15 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payload (Hex).
+        /// </summary>
+        public static string HexPayload {
+            get {
+                return ResourceManager.GetString("HexPayload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
         public static string ID {
