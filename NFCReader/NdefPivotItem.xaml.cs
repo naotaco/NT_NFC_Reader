@@ -84,7 +84,7 @@ namespace NFCReader
             };
             hexPayloadSection.Close();
             LayoutRoot.Children.Add(hexPayloadSection);
-           
+
 
         }
 
@@ -126,42 +126,72 @@ namespace NFCReader
 
         private List<string> CreateHexAsciiStrigCorrection(List<byte> input)
         {
-            int count = 1;
             var hex = new StringBuilder();
             var ascii = new StringBuilder();
             var ret = new List<string>();
 
-            foreach (byte b in input)
+            var list = splitByteCorrection(input, 8);
+
+            foreach (List<byte> line in list)
             {
-                //hex
-                if (b < 16)
+                foreach (byte b in line)
                 {
-                    hex.Append('0');
-                }
-                hex.Append(Convert.ToString(b, 16));
-                hex.Append(" ");
+                    //hex
+                    if (b < 16)
+                    {
+                        hex.Append('0');
+                    }
+                    hex.Append(Convert.ToString(b, 16));
+                    hex.Append(" ");
 
-                // ascii
-                // if ascii
-                if ((int)b >= 0x20 && (int)b <= 0x7e)
-                {
-                    ascii.Append((char)b);
-                }
-                else
-                {
-                    ascii.Append(".");
-                }
+                    // ascii
+                    // if possible to map to character
+                    if ((int)b >= 0x20 && (int)b <= 0x7e)
+                    {
+                        ascii.Append((char)b);
+                    }
+                    else
+                    {
+                        ascii.Append(".");
+                    }
 
-                if (count % 8 == 0)
-                {
-                    string s = hex.ToString() + " " + ascii.ToString() + System.Environment.NewLine;
-                    Debug.WriteLine(s);
-                    ret.Add(s);
-                    hex.Clear();
-                    ascii.Clear();
                 }
 
-                count++;
+                string s = hex.ToString() + " " + ascii.ToString() + System.Environment.NewLine;
+                Debug.WriteLine("line: " + s);
+                ret.Add(s);
+                hex.Clear();
+                ascii.Clear();
+
+            }
+
+            return ret;
+        }
+
+        private List<List<byte>> splitByteCorrection(List<byte> input, int length)
+        {
+            var ret = new List<List<byte>>();
+
+            if (length < 1)
+            {
+                return null;
+            }
+
+            int count = 0;
+
+            while (count + length - 1 < input.Count)
+            {
+                var list = new List<byte>();
+                list = input.GetRange(count, length);
+                ret.Add(list);
+
+                count += length;
+            }
+
+            if (input.Count > count)
+            {
+                // if there're some remaining bytes,
+                ret.Add(input.GetRange(count, input.Count - count));
             }
 
             return ret;
@@ -169,5 +199,5 @@ namespace NFCReader
 
     }
 
-    
+
 }
