@@ -80,6 +80,11 @@ namespace NFCReader
             var payloadSection = CreateSection(AppResources.Payload, record.payload);
             LayoutRoot.Children.Add(payloadSection);
 
+            // raw data section
+
+            var ndefHeaderSection = CreateSection(AppResources.NDEFHeader, Convert.ToString(record.ndefHeader, 2).PadLeft(8, '0'), false, true);
+            LayoutRoot.Children.Add(ndefHeaderSection);
+
             var hexPayloadSection = new Section(AppResources.HexPayload, CreateHexAsciiStrigCorrection(record.RawPayload))
             {
                 Margin = new Thickness(0),
@@ -94,19 +99,58 @@ namespace NFCReader
 
         private Section CreateSection(String title, String text)
         {
-            var section = new Section(title, text)
-            {
-                Margin = new Thickness(0),
-            };
+            bool open = false;
 
             if (text.Length < 1)
             {
-                section.SetText("(None)");
-                section.Close();
+                text = "(None)";
+                open = false;
             }
             else
             {
+                open = true;
+            }
+
+            return CreateSection(title, text, open, false);
+        }
+
+        private Section CreateSection(string title, string text, bool isOpened)
+        {
+            if (text.Length < 1)
+            {
+                text = "(None)";
+            }
+
+            return CreateSection(title, text, isOpened, false);
+        }
+
+        private Section CreateSection(string title, string text, bool isOpened, bool isMonoSpaceFont)
+        {
+            Section section;
+
+            if (isMonoSpaceFont)
+            {
+                section = new Section(title, text)
+                {
+                    Margin = new Thickness(0),
+                    FontFamily = new System.Windows.Media.FontFamily("Courier New"),
+                };
+            }
+            else
+            {
+                section = new Section(title, text)
+                {
+                    Margin = new Thickness(0),
+                };
+            }
+
+            if (isOpened)
+            {
                 section.Open();
+            }
+            else
+            {
+                section.Close();
             }
 
             return section;
@@ -117,11 +161,7 @@ namespace NFCReader
             StringBuilder sb = new StringBuilder();
             foreach (byte b in input)
             {
-                if (b < 16)
-                {
-                    sb.Append('0');
-                }
-                sb.Append(Convert.ToString(b, 16));
+                sb.Append(Convert.ToString(b, 16).PadLeft(2, '0'));
                 sb.Append(" ");
             }
 
@@ -138,15 +178,15 @@ namespace NFCReader
 
             foreach (List<byte> line in list)
             {
+                int count = 0;
                 foreach (byte b in line)
                 {
-                    //hex
-                    if (b < 16)
+                    //hex                    
+                    if (count != 0)
                     {
-                        hex.Append('0');
+                        hex.Append(" ");
                     }
-                    hex.Append(Convert.ToString(b, 16));
-                    hex.Append(" ");
+                    hex.Append(Convert.ToString(b, 16).PadLeft(2, '0'));
 
                     // ascii
                     // if possible to map to character
@@ -158,6 +198,8 @@ namespace NFCReader
                     {
                         ascii.Append(".");
                     }
+
+                    count++;
 
                 }
 
@@ -200,7 +242,6 @@ namespace NFCReader
 
             return ret;
         }
-
     }
 
 
