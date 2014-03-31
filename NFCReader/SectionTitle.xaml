@@ -14,7 +14,12 @@
             <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Name="Triangle" Source="Assets\Triangle.png" Width="30" Margin="0,5" Grid.Column="0" />
+        <Rectangle Name="Triangle" Height="30" Width="20" Margin="0,5" Grid.Column="0"  Fill="{StaticResource PhoneForegroundBrush}" >
+            <Rectangle.OpacityMask>
+                <ImageBrush ImageSource="Assets\Triangle.png" />
+            </Rectangle.OpacityMask>    
+        </Rectangle>
+        
         <TextBlock Name="TitleText" Text="aaa" Margin="12,0" Grid.Column="1" VerticalAlignment="Center"
                    Foreground="{StaticResource PhoneAccentBrush}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" />
     </Grid>
