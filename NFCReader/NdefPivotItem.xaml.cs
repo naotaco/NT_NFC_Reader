@@ -24,7 +24,7 @@ namespace NFCReader
 
         public void setRecord(int number, SonyNdefUtils.SonyNdefRecord record)
         {
-            PivotItemTitle.Text = "Record #" + number;
+            PivotItemTitle.Text = "NDEF Record #" + number;
 
             var idSection = CreateSection(AppResources.ID, record.id);
             LayoutRoot.Children.Add(idSection);
@@ -81,6 +81,8 @@ namespace NFCReader
             var hexPayloadSection = new Section(AppResources.HexPayload, CreateHexAsciiStrigCorrection(record.RawPayload))
             {
                 Margin = new Thickness(0),
+                FontFamily = new System.Windows.Media.FontFamily("Courier New"),
+                FontSize = (double)Application.Current.Resources["PhoneFontSizeSmall"],
             };
             hexPayloadSection.Close();
             LayoutRoot.Children.Add(hexPayloadSection);
