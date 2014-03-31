@@ -108,7 +108,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Parser\SonyNdefParser.cs" />
+    <Compile Include="Parser\NdefParser.cs" />
     <Compile Include="Misc\SonyNdefRecord.cs" />
     <Compile Include="Section.xaml.cs">
       <DependentUpon>Section.xaml</DependentUpon>

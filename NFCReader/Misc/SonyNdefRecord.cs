@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SonyNdefUtils
+namespace NdefUtils
 {
-    public class SonyNdefRecord
+    public class NdefRecord
     {
 
         public byte ndefHeader
@@ -85,7 +85,7 @@ namespace SonyNdefUtils
             set;
         }
 
-        public SonyNdefRecord()
+        public NdefRecord()
         {
             ndefHeader = (byte)0;
             typeLength = 0;

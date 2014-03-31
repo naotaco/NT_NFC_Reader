@@ -16,13 +16,13 @@ namespace NFCReader
 {
     public partial class NdefPivotItem : UserControl
     {
-        public NdefPivotItem(int number, SonyNdefUtils.SonyNdefRecord record)
+        public NdefPivotItem(int number, NdefUtils.NdefRecord record)
         {
             InitializeComponent();
             setRecord(number, record);
         }
 
-        public void setRecord(int number, SonyNdefUtils.SonyNdefRecord record)
+        public void setRecord(int number, NdefUtils.NdefRecord record)
         {
             PivotItemTitle.Text = "NDEF Record #" + number;
 
@@ -65,8 +65,7 @@ namespace NFCReader
             var typeSection = CreateSection(AppResources.Type, record.type);
             LayoutRoot.Children.Add(typeSection);
 
-            var payloadSection = CreateSection(AppResources.Payload, record.payload);
-            LayoutRoot.Children.Add(payloadSection);
+
 
             if (record.SonyPayload.Count > 0)
             {
@@ -77,6 +76,9 @@ namespace NFCReader
                 sonyPayloadSection.Open();
                 LayoutRoot.Children.Add(sonyPayloadSection);
             }
+
+            var payloadSection = CreateSection(AppResources.Payload, record.payload);
+            LayoutRoot.Children.Add(payloadSection);
 
             var hexPayloadSection = new Section(AppResources.HexPayload, CreateHexAsciiStrigCorrection(record.RawPayload))
             {

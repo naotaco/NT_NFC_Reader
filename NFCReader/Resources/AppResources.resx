@@ -165,4 +165,7 @@ To see detail, swipe right.</value>
   <data name="Message_Copied" xml:space="preserve">
     <value>The text has been copied to your clipboard!</value>
   </data>
+  <data name="NDEFHeader" xml:space="preserve">
+    <value>NDEF Header</value>
+  </data>
 </root>

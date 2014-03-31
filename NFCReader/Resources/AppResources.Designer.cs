@@ -115,6 +115,15 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NDEF Header.
+        /// </summary>
+        public static string NDEFHeader {
+            get {
+                return ResourceManager.GetString("NDEFHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detected NFC tag.
         ///To see detail, swipe right..
         /// </summary>

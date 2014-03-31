@@ -10,7 +10,7 @@ using Microsoft.Phone.Shell;
 using NFCReader.Resources;
 using Windows.Networking.Proximity;
 using System.Diagnostics;
-using SonyNdefUtils;
+using NdefUtils;
 using System.Text;
 
 namespace NFCReader
@@ -49,8 +49,8 @@ namespace NFCReader
 
         private void NFCMessageReceivedHandler(ProximityDevice sender, ProximityMessage message)
         {
-            var parser = new SonyNdefParser(message);
-            List<SonyNdefRecord> ndefRecords = new List<SonyNdefRecord>();
+            var parser = new NdefParser(message);
+            List<NdefRecord> ndefRecords = new List<NdefRecord>();
             ndefRecords = parser.Parse();
             InitializePivot();
 
@@ -73,7 +73,7 @@ namespace NFCReader
 
             int i = 0;
 
-            foreach (SonyNdefRecord r in ndefRecords)
+            foreach (NdefRecord r in ndefRecords)
             {
 
                 i++;

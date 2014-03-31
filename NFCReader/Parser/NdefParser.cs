@@ -5,30 +5,30 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Windows.Networking.Proximity;
 
-namespace SonyNdefUtils
+namespace NdefUtils
 {
-    public class SonyNdefParser
+    public class NdefParser
     {
 
         private Byte[] raw;
-        private List<SonyNdefRecord> records;
+        private List<NdefRecord> records;
 
-        public SonyNdefParser(Byte[] input)
+        public NdefParser(Byte[] input)
         {
             raw = input;
-            records = new List<SonyNdefRecord>();
+            records = new List<NdefRecord>();
 
         }
 
-        public SonyNdefParser(ProximityMessage message)
+        public NdefParser(ProximityMessage message)
         {
             var rawMsg = message.Data.ToArray();
             raw = rawMsg;
-            records = new List<SonyNdefRecord>();
+            records = new List<NdefRecord>();
 
         }
 
-        public List<SonyNdefRecord> Parse()
+        public List<NdefRecord> Parse()
         {
             try
             {
@@ -50,7 +50,7 @@ namespace SonyNdefUtils
             {
                 bool isLastMessage = false;
 
-                var record = new SonyNdefRecord();
+                var record = new NdefRecord();
                 record.ndefHeader = raw[recordPointer];
                 recordPointer++;
                 Debug.WriteLine("NDEF header: " + Convert.ToString((int)record.ndefHeader, 2).PadLeft(8));
@@ -148,9 +148,9 @@ namespace SonyNdefUtils
             }
         }
 
-        private SonyNdefRecord ParseSonyNdefPayload(byte[] payload)
+        private NdefRecord ParseSonyNdefPayload(byte[] payload)
         {
-            var ret = new SonyNdefRecord();
+            var ret = new NdefRecord();
             StringBuilder sb = new StringBuilder();
             
             int pointer = 0;
@@ -202,11 +202,11 @@ namespace SonyNdefUtils
             return ret;
         }
 
-        private int CountValidSonyNdefRecord(List<SonyNdefRecord> list)
+        private int CountValidSonyNdefRecord(List<NdefRecord> list)
         {
             int ret = 0;
 
-            foreach (SonyNdefRecord record in list){
+            foreach (NdefRecord record in list){
                 if (record.SSID.Length > 0 && record.Password.Length > 0)
                 {
                     ret++;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SonyNdefUtils
+namespace NdefUtils
 {
     public class NdefParseException : Exception
     {
