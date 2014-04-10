@@ -30,7 +30,7 @@ namespace NFCReader
         {
             PivotItemTitle.Text = "NDEF Record #" + number;
 
-            AppendString(PivotItemTitle.Text);
+            AppendToSharingTextAsTitle("-- " + PivotItemTitle.Text + " --");
 
             var idSection = CreateSection(AppResources.ID, record.id);
             LayoutRoot.Children.Add(idSection);
@@ -82,10 +82,10 @@ namespace NFCReader
                  };
                 sonyPayloadSection.Open();
                 LayoutRoot.Children.Add(sonyPayloadSection);
-                AppendString(AppResources.SonyRecordTitle);
+                AppendToSharingTextAsTitle(AppResources.SonyRecordTitle);
                 foreach (string s in record.SonyPayload)
                 {
-                    AppendString(s);
+                    AppendToSharingText(s);
                 }
             }
 
@@ -105,10 +105,10 @@ namespace NFCReader
             };
             hexPayloadSection.Close();
             LayoutRoot.Children.Add(hexPayloadSection);
-            AppendString(AppResources.HexPayload);
+            AppendToSharingTextAsTitle(AppResources.HexPayload);
             foreach (string s in CreateHexAsciiStrigCorrection(record.RawPayload))
             {
-                AppendString(s);
+                AppendToSharingText(s);
             }
 
 
@@ -127,8 +127,8 @@ namespace NFCReader
             {
                 open = true;
             }
-            AppendString(title);
-            AppendString(text);
+            AppendToSharingTextAsTitle(title);
+            AppendToSharingText(text);
 
             return CreateSection(title, text, open, false);
         }
@@ -262,9 +262,19 @@ namespace NFCReader
             return ret;
         }
 
-        private void AppendString(string s)
+        private void AppendToSharingText(string s)
         {
             stringBuilder.Append(s);
+            stringBuilder.Append(System.Environment.NewLine);
+        }
+
+        private void AppendToSharingTextAsTitle(string s)
+        {
+            stringBuilder.Append(System.Environment.NewLine);
+            stringBuilder.Append(" ** ");
+            stringBuilder.Append(s);
+            stringBuilder.Append(" **");
+            stringBuilder.Append(System.Environment.NewLine);
             stringBuilder.Append(System.Environment.NewLine);
         }
 
