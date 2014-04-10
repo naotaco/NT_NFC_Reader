@@ -127,8 +127,6 @@ namespace NFCReader
             {
                 open = true;
             }
-            AppendToSharingTextAsTitle(title);
-            AppendToSharingText(text);
 
             return CreateSection(title, text, open, false);
         }
@@ -171,6 +169,9 @@ namespace NFCReader
             {
                 section.Close();
             }
+
+            AppendToSharingTextAsTitle(title);
+            AppendToSharingText(text);
 
             return section;
         }
