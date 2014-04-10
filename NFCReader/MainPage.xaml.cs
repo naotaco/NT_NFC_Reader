@@ -39,6 +39,7 @@ namespace NFCReader
             if (_proximitiyDevice == null)
             {
                 Debug.WriteLine("It seems this is not NFC-available device");
+                MessageBox.Show(AppResources.Error_NFC_NotSupported, AppResources.Title_error, MessageBoxButton.OK);
                 return;
             }
 
@@ -66,8 +67,9 @@ namespace NFCReader
             {
                 Dispatcher.BeginInvoke(() =>
                 {
-                    // there's no NDEF record.
+                    // NDEF records found.
                     NFCMessage.Text = AppResources.NFC_Message_detected;
+                    ApplicationBar = CreateAppBar();
                 });
             }
 
@@ -91,6 +93,8 @@ namespace NFCReader
                     // ValuesPanel.Children.Add(textBlock);
                     MyPivot.Items.Add(newPivotItem);
 
+
+
                 });
             }
 
@@ -107,6 +111,24 @@ namespace NFCReader
                 }
             });
 
+        }
+
+        private ApplicationBar CreateAppBar()
+        {
+            var appBar = (Microsoft.Phone.Shell.ApplicationBar)Resources["appbar"];
+
+            var shareButton = new ApplicationBarIconButton();
+            shareButton.Text = AppResources.Button_share;
+            shareButton.IconUri = new Uri("/Assets/shareButton.png", UriKind.Relative);
+            appBar.Buttons.Add(shareButton);
+            shareButton.Click += new EventHandler(ShareButton_click);
+
+            return appBar;
+        }
+
+        private void ShareButton_click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Share!");
         }
     }
 

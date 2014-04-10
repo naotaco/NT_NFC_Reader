@@ -168,4 +168,13 @@ To see detail, swipe right.</value>
   <data name="NDEFHeader" xml:space="preserve">
     <value>NDEF Header</value>
   </data>
+  <data name="Button_share" xml:space="preserve">
+    <value>Share...</value>
+  </data>
+  <data name="Error_NFC_NotSupported" xml:space="preserve">
+    <value>It looks that this device does not support NFC.</value>
+  </data>
+  <data name="Title_error" xml:space="preserve">
+    <value>Error</value>
+  </data>
 </root>
