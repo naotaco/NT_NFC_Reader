@@ -177,4 +177,7 @@ To see detail, swipe right.</value>
   <data name="Title_error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Title_shareText" xml:space="preserve">
+    <value>Data from your NFC tag</value>
+  </data>
 </root>

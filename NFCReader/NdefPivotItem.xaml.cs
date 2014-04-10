@@ -16,8 +16,12 @@ namespace NFCReader
 {
     public partial class NdefPivotItem : UserControl
     {
+
+        private StringBuilder stringBuilder;
+
         public NdefPivotItem(int number, NdefUtils.NdefRecord record)
         {
+            stringBuilder = new StringBuilder();
             InitializeComponent();
             setRecord(number, record);
         }
@@ -25,6 +29,8 @@ namespace NFCReader
         public void setRecord(int number, NdefUtils.NdefRecord record)
         {
             PivotItemTitle.Text = "NDEF Record #" + number;
+
+            AppendString(PivotItemTitle.Text);
 
             var idSection = CreateSection(AppResources.ID, record.id);
             LayoutRoot.Children.Add(idSection);
@@ -59,7 +65,8 @@ namespace NFCReader
                     break;
             }
 
-            var recordTypeSection = CreateSection(AppResources.TypeNameFormat, "0x0" + record.typeNameFormat.ToString("x") + " (" + tnf + ")");
+            var tnfTitle = "0x0" + record.typeNameFormat.ToString("x") + " (" + tnf + ")";
+            var recordTypeSection = CreateSection(AppResources.TypeNameFormat, tnfTitle);
             LayoutRoot.Children.Add(recordTypeSection);
 
             var typeSection = CreateSection(AppResources.Type, record.type);
@@ -75,6 +82,11 @@ namespace NFCReader
                  };
                 sonyPayloadSection.Open();
                 LayoutRoot.Children.Add(sonyPayloadSection);
+                AppendString(AppResources.SonyRecordTitle);
+                foreach (string s in record.SonyPayload)
+                {
+                    AppendString(s);
+                }
             }
 
             var payloadSection = CreateSection(AppResources.Payload, record.payload);
@@ -93,6 +105,11 @@ namespace NFCReader
             };
             hexPayloadSection.Close();
             LayoutRoot.Children.Add(hexPayloadSection);
+            AppendString(AppResources.HexPayload);
+            foreach (string s in CreateHexAsciiStrigCorrection(record.RawPayload))
+            {
+                AppendString(s);
+            }
 
 
         }
@@ -110,6 +127,8 @@ namespace NFCReader
             {
                 open = true;
             }
+            AppendString(title);
+            AppendString(text);
 
             return CreateSection(title, text, open, false);
         }
@@ -241,6 +260,17 @@ namespace NFCReader
             }
 
             return ret;
+        }
+
+        private void AppendString(string s)
+        {
+            stringBuilder.Append(s);
+            stringBuilder.Append(System.Environment.NewLine);
+        }
+
+        public string getAppendString()
+        {
+            return stringBuilder.ToString();
         }
     }
 

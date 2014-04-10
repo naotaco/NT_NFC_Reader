@@ -12,6 +12,9 @@ using Windows.Networking.Proximity;
 using System.Diagnostics;
 using NdefUtils;
 using System.Text;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Foundation;
+using Microsoft.Phone.Tasks;
 
 namespace NFCReader
 {
@@ -21,6 +24,7 @@ namespace NFCReader
 
         private ProximityDevice _proximitiyDevice;
         private long _subscriptionIdNdef;
+        private StringBuilder stringBuilder;
 
         // Constructor
         public MainPage()
@@ -28,6 +32,8 @@ namespace NFCReader
             InitializeComponent();
 
             initNFC();
+
+            stringBuilder = new StringBuilder();
         }
 
 
@@ -90,11 +96,10 @@ namespace NFCReader
                     var content = new NdefPivotItem(MyPivot.Items.Count, r);
                     newPivotItem.Content = content;
 
+                    stringBuilder.Append(content.getAppendString());
+
                     // ValuesPanel.Children.Add(textBlock);
                     MyPivot.Items.Add(newPivotItem);
-
-
-
                 });
             }
 
@@ -128,7 +133,16 @@ namespace NFCReader
 
         private void ShareButton_click(object sender, EventArgs e)
         {
-            MessageBox.Show("Share!");
+            ShareText(stringBuilder.ToString());
+        }
+
+        private void ShareText(string s)
+        {
+            EmailComposeTask emailComposeTask = new EmailComposeTask();
+
+            emailComposeTask.Subject = AppResources.Title_shareText;
+            emailComposeTask.Body = s;
+            emailComposeTask.Show();
         }
     }
 

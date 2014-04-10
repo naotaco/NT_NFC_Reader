@@ -215,6 +215,15 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data from your NFC tag.
+        /// </summary>
+        public static string Title_shareText {
+            get {
+                return ResourceManager.GetString("Title_shareText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         public static string Type {
