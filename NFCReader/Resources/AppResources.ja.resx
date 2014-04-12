@@ -124,7 +124,7 @@
     <value>Menu Item</value>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>NFC Reader</value>
+    <value>NT NFC Reader</value>
   </data>
   <data name="Button_share" xml:space="preserve">
     <value>Share...</value>

@@ -79,7 +79,7 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NFC Reader.
+        ///   Looks up a localized string similar to NT NFC Reader.
         /// </summary>
         public static string ApplicationTitle {
             get {
