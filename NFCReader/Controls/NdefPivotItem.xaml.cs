@@ -32,6 +32,11 @@ namespace NFCReader
 
             AppendToSharingTextAsTitle("-- " + PivotItemTitle.Text + " --");
 
+            // NDEF header in binary
+            var ndefHeaderSection = CreateSection(AppResources.NDEFHeader, Convert.ToString(record.ndefHeader, 2).PadLeft(8, '0'), false, true);
+            LayoutRoot.Children.Add(ndefHeaderSection);
+
+            // id (if exist)
             var idSection = CreateSection(AppResources.ID, record.id);
             LayoutRoot.Children.Add(idSection);
 
@@ -69,11 +74,11 @@ namespace NFCReader
             var recordTypeSection = CreateSection(AppResources.TypeNameFormat, tnfTitle);
             LayoutRoot.Children.Add(recordTypeSection);
 
+            // type
             var typeSection = CreateSection(AppResources.Type, record.type);
             LayoutRoot.Children.Add(typeSection);
-
-
-
+            
+            // payload as sony's camera's records
             if (record.SonyPayload.Count > 0)
             {
                 var sonyPayloadSection = new Section(AppResources.SonyRecordTitle, record.SonyPayload)
@@ -89,14 +94,11 @@ namespace NFCReader
                 }
             }
 
+            // payload in ASCII
             var payloadSection = CreateSection(AppResources.Payload, record.payload);
             LayoutRoot.Children.Add(payloadSection);
 
-            // raw data section
-
-            var ndefHeaderSection = CreateSection(AppResources.NDEFHeader, Convert.ToString(record.ndefHeader, 2).PadLeft(8, '0'), false, true);
-            LayoutRoot.Children.Add(ndefHeaderSection);
-
+            // hex payload
             var hexPayloadSection = new Section(AppResources.HexPayload, CreateHexAsciiStrigCorrection(record.RawPayload))
             {
                 Margin = new Thickness(0),
