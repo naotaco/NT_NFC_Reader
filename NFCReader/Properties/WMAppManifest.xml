@@ -4,14 +4,9 @@
   <Languages xmlns="">
     <Language code="ja" />
   </Languages>
-  <App xmlns="" ProductID="{226e3b6a-c7f0-47cc-bd37-87b9e9ad8d9f}" Title="NT NFC reader" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="NFCReader author" Description="This application provides a way to read NDEF data from NFC tags.&#xD;&#xA;If you feel Hex or Binary familier, this application can be your best." Publisher="NFCReader" PublisherID="{c9e90f9a-9afc-4918-9f61-a6a63982aae1}">
+  <App xmlns="" ProductID="{226e3b6a-c7f0-47cc-bd37-87b9e9ad8d9f}" Title="NT NFC reader" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Nao Taco" Description="This application provides a way to read NDEF data from NFC tags.&#xD;&#xA;If you feel Hex or Binary familier, this application can be your best." Publisher="naotaco apps." PublisherID="{c9e90f9a-9afc-4918-9f61-a6a63982aae1}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
-      <Capability Name="ID_CAP_SENSORS" />
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_PROXIMITY" />
     </Capabilities>
     <Tasks>
@@ -30,10 +25,13 @@
           </BackBackgroundImageURI>
           <BackTitle>
           </BackTitle>
+          <LargeBackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileLarge.png</LargeBackgroundImageURI>
+          <LargeBackContent />
+          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
+          </LargeBackBackgroundImageURI>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <HasLarge>True</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>
