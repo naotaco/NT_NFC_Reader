@@ -8,4 +8,7 @@ WP8 application to read NFC records.
 - Copy each sections to clipboard
 - Send all data to mail app. as text
 
-Please give me your feedback.
+This software is published under the [MIT License](http://opensource.org/licenses/mit-license.php).
+
+This application can be found on Windows Phone store as [NT NFC Readrer](http://www.windowsphone.com/en-us/store/app/nt-nfc-reader/b5f24e65-5537-46a7-b6ad-0547d12697e3).
+Please give me your feedbacks.
