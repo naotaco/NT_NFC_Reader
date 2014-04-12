@@ -93,13 +93,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Misc\NoNdefRecordException.cs" />
     <Compile Include="Misc\NoSonyNdefRecordException.cs" />
     <Compile Include="Misc\ParseException.cs" />
-    <Compile Include="NdefPivotItem.xaml.cs">
+    <Compile Include="Controls\NdefPivotItem.xaml.cs">
       <DependentUpon>NdefPivotItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,10 +110,10 @@
     </Compile>
     <Compile Include="Parser\NdefParser.cs" />
     <Compile Include="Misc\SonyNdefRecord.cs" />
-    <Compile Include="Section.xaml.cs">
+    <Compile Include="Controls\Section.xaml.cs">
       <DependentUpon>Section.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SectionTitle.xaml.cs">
+    <Compile Include="Controls\SectionTitle.xaml.cs">
       <DependentUpon>SectionTitle.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -122,19 +122,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NdefPivotItem.xaml">
+    <Page Include="Controls\NdefPivotItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Section.xaml">
+    <Page Include="Controls\Section.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SectionTitle.xaml">
+    <Page Include="Controls\SectionTitle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

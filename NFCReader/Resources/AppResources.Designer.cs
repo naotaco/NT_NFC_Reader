@@ -106,7 +106,7 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Payload (Hex).
+        ///   Looks up a localized string similar to Raw payload (Hex, ASCII).
         /// </summary>
         public static string HexPayload {
             get {
@@ -161,7 +161,8 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Touch to your tag..
+        ///   Looks up a localized string similar to Touch to your tag.
+        ///Your phone may displays error message for some tags, however, please ignore it..
         /// </summary>
         public static string NFC_Message_mainPage {
             get {

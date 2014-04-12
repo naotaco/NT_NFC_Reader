@@ -135,7 +135,8 @@
     <value>Menu Item</value>
   </data>
   <data name="NFC_Message_mainPage" xml:space="preserve">
-    <value>Touch to your tag.</value>
+    <value>Touch to your tag.
+Your phone may displays error message for some tags, however, please ignore it.</value>
   </data>
   <data name="ID" xml:space="preserve">
     <value>ID</value>
@@ -160,7 +161,7 @@ To see detail, swipe right.</value>
     <value>Type Name Format</value>
   </data>
   <data name="HexPayload" xml:space="preserve">
-    <value>Payload (Hex)</value>
+    <value>Raw payload (Hex, ASCII)</value>
   </data>
   <data name="Message_Copied" xml:space="preserve">
     <value>The text has been copied to your clipboard!</value>
