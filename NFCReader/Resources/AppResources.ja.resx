@@ -151,9 +151,11 @@
   <data name="NFC_Message_error" xml:space="preserve">
     <value>NDEFレコードが見つかりませんでした</value>
   </data>
+  <data name="NFC_Message_guide" xml:space="preserve">
+    <value>タグのタイプによってはエラーが表示されますが、無視してください。</value>
+  </data>
   <data name="NFC_Message_mainPage" xml:space="preserve">
-    <value>タグにタッチしてください。
-タグのタイプによってはエラーが表示されますが、無視してください。</value>
+    <value>タグにタッチしてください。</value>
   </data>
   <data name="Payload" xml:space="preserve">
     <value>Payload (ASCIIに強制変換)</value>

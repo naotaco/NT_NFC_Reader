@@ -161,8 +161,16 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Touch to your tag.
-        ///Your phone may displays error message for some tags, however, please ignore it..
+        ///   Looks up a localized string similar to Your phone may displays error message for some tags, however, please ignore it..
+        /// </summary>
+        public static string NFC_Message_guide {
+            get {
+                return ResourceManager.GetString("NFC_Message_guide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Touch to your tag..
         /// </summary>
         public static string NFC_Message_mainPage {
             get {

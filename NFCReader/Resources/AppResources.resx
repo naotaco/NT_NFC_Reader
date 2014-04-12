@@ -135,8 +135,7 @@
     <value>Menu Item</value>
   </data>
   <data name="NFC_Message_mainPage" xml:space="preserve">
-    <value>Touch to your tag.
-Your phone may displays error message for some tags, however, please ignore it.</value>
+    <value>Touch to your tag.</value>
   </data>
   <data name="ID" xml:space="preserve">
     <value>ID</value>
@@ -180,5 +179,8 @@ To see detail, swipe right.</value>
   </data>
   <data name="Title_shareText" xml:space="preserve">
     <value>Data from your NFC tag</value>
+  </data>
+  <data name="NFC_Message_guide" xml:space="preserve">
+    <value>Your phone may displays error message for some tags, however, please ignore it.</value>
   </data>
 </root>
