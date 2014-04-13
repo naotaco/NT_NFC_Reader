@@ -161,7 +161,7 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your phone may displays error message for some tags, however, please ignore it..
+        ///   Looks up a localized string similar to Your phone may display error message for some tags, however, please ignore it..
         /// </summary>
         public static string NFC_Message_guide {
             get {

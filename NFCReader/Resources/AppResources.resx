@@ -181,6 +181,6 @@ To see detail, swipe right.</value>
     <value>Data from your NFC tag</value>
   </data>
   <data name="NFC_Message_guide" xml:space="preserve">
-    <value>Your phone may displays error message for some tags, however, please ignore it.</value>
+    <value>Your phone may display error message for some tags, however, please ignore it.</value>
   </data>
 </root>
