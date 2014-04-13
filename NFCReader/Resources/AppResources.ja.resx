@@ -117,24 +117,74 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResourceFlowDirection" xml:space="preserve">
-    <value>LeftToRight</value>
-    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
-  </data>
-  <data name="ResourceLanguage" xml:space="preserve">
-    <value>ja</value>
-    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
-  </data>
-  <data name="ApplicationTitle" xml:space="preserve">
-    <value>NFC Reader</value>
-  </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
   </data>
   <data name="AppBarMenuItemText" xml:space="preserve">
     <value>Menu Item</value>
   </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>NT NFC Reader</value>
+  </data>
+  <data name="Button_share" xml:space="preserve">
+    <value>Share...</value>
+  </data>
+  <data name="Error_NFC_NotSupported" xml:space="preserve">
+    <value>この端末はNFCをサポートしていないようです</value>
+  </data>
+  <data name="HexPayload" xml:space="preserve">
+    <value>Raw payload (Hex, ASCII)</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Message_Copied" xml:space="preserve">
+    <value>テキストをクリップボードにコピーしました</value>
+  </data>
+  <data name="NDEFHeader" xml:space="preserve">
+    <value>NDEF Header</value>
+  </data>
+  <data name="NFC_Message_detected" xml:space="preserve">
+    <value>NFCタグを検出しました。
+右にスワイプしてください。</value>
+  </data>
+  <data name="NFC_Message_error" xml:space="preserve">
+    <value>NDEFレコードが見つかりませんでした</value>
+  </data>
+  <data name="NFC_Message_guide" xml:space="preserve">
+    <value>タグのタイプによってはエラーが表示されますが、無視してください。</value>
+  </data>
   <data name="NFC_Message_mainPage" xml:space="preserve">
-    <value>タッチしてください</value>
+    <value>タグにタッチしてください。</value>
+  </data>
+  <data name="Payload" xml:space="preserve">
+    <value>Payload (ASCIIに強制変換)</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>ja-JP</value>
+  </data>
+  <data name="SonyRecordTitle" xml:space="preserve">
+    <value>Records of Sony's camera</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value />
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Title_error" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="Title_shareText" xml:space="preserve">
+    <value>NFCタグから読み取ったデータ</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="TypeNameFormat" xml:space="preserve">
+    <value>Type Name Format</value>
   </data>
 </root>

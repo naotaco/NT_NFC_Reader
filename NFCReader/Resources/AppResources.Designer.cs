@@ -79,7 +79,7 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NFC Reader.
+        ///   Looks up a localized string similar to NT NFC Reader.
         /// </summary>
         public static string ApplicationTitle {
             get {
@@ -106,7 +106,7 @@ namespace NFCReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Payload (Hex).
+        ///   Looks up a localized string similar to Raw payload (Hex, ASCII).
         /// </summary>
         public static string HexPayload {
             get {
@@ -157,6 +157,15 @@ namespace NFCReader.Resources {
         public static string NFC_Message_error {
             get {
                 return ResourceManager.GetString("NFC_Message_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your phone may display error message for some tags, however, please ignore it..
+        /// </summary>
+        public static string NFC_Message_guide {
+            get {
+                return ResourceManager.GetString("NFC_Message_guide", resourceCulture);
             }
         }
         
