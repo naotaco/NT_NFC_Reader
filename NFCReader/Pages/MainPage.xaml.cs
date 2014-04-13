@@ -122,6 +122,8 @@ namespace NFCReader
         {
             var appBar = (Microsoft.Phone.Shell.ApplicationBar)Resources["appbar"];
 
+            appBar.Buttons.Clear();
+
             var shareButton = new ApplicationBarIconButton();
             shareButton.Text = AppResources.Button_share;
             shareButton.IconUri = new Uri("/Assets/shareButton.png", UriKind.Relative);
