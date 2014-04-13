@@ -103,6 +103,13 @@ namespace NFCReader
                 });
             }
 
+            Dispatcher.BeginInvoke(() =>
+            {
+                if (MyPivot.Items.Count > 1)
+                {
+                    MyPivot.SelectedIndex = 1;
+                }
+            });
         }
 
         private void InitializePivot()
