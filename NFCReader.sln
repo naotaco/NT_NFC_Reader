@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Phone
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFCReader", "NFCReader\NFCReader.csproj", "{226E3B6A-C7F0-47CC-BD37-87B9E9AD8D9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NtNfcLib", "..\NtNfcLib\NtNfcLib\NtNfcLib.csproj", "{536E35B7-F3FF-4ABA-8C78-86E39E6C0B36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NtNfcLib", "nfclib\NtNfcLib\NtNfcLib.csproj", "{536E35B7-F3FF-4ABA-8C78-86E39E6C0B36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

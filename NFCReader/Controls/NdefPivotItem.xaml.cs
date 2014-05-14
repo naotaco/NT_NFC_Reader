@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Text;
 using NFCReader.Resources;
 using System.Diagnostics;
+using NtNfcLib;
+
 
 namespace NFCReader
 {

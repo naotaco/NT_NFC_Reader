@@ -171,7 +171,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NtNfcLib\NtNfcLib\NtNfcLib.csproj">
+    <ProjectReference Include="..\nfclib\NtNfcLib\NtNfcLib.csproj">
       <Project>{536E35B7-F3FF-4ABA-8C78-86E39E6C0B36}</Project>
       <Name>NtNfcLib</Name>
     </ProjectReference>
