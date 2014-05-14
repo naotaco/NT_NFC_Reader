@@ -96,9 +96,6 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Misc\NoNdefRecordException.cs" />
-    <Compile Include="Misc\NoSonyNdefRecordException.cs" />
-    <Compile Include="Misc\ParseException.cs" />
     <Compile Include="Controls\NdefPivotItem.xaml.cs">
       <DependentUpon>NdefPivotItem.xaml</DependentUpon>
     </Compile>
@@ -108,8 +105,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Parser\NdefParser.cs" />
-    <Compile Include="Misc\SonyNdefRecord.cs" />
     <Compile Include="Controls\Section.xaml.cs">
       <DependentUpon>Section.xaml</DependentUpon>
     </Compile>
@@ -174,6 +169,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NtNfcLib\NtNfcLib\NtNfcLib.csproj">
+      <Project>{536E35B7-F3FF-4ABA-8C78-86E39E6C0B36}</Project>
+      <Name>NtNfcLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

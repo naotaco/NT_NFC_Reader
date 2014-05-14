@@ -19,14 +19,14 @@ namespace NFCReader
 
         private StringBuilder stringBuilder;
 
-        public NdefPivotItem(int number, NdefUtils.NdefRecord record)
+        public NdefPivotItem(int number, NtNfcLib.NdefRecord record)
         {
             stringBuilder = new StringBuilder();
             InitializeComponent();
             setRecord(number, record);
         }
 
-        public void setRecord(int number, NdefUtils.NdefRecord record)
+        public void setRecord(int number, NtNfcLib.NdefRecord record)
         {
             PivotItemTitle.Text = "NDEF Record #" + number;
 

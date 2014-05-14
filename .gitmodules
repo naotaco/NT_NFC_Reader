@@ -1,0 +1,3 @@
+[submodule "nfclib"]
+	path = nfclib
+	url = git@github.com:naotaco/NtNfcLib.git

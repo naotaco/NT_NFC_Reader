@@ -10,7 +10,7 @@ using Microsoft.Phone.Shell;
 using NFCReader.Resources;
 using Windows.Networking.Proximity;
 using System.Diagnostics;
-using NdefUtils;
+using NtNfcLib;
 using System.Text;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
