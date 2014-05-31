@@ -246,6 +246,12 @@ namespace NFCReader
 
                 }
 
+                while (hex.ToString().Length < 23)
+                {
+                    Debug.WriteLine("padding.");
+                    hex.Append(" ");
+                }
+
                 string s = hex.ToString() + " " + ascii.ToString() + System.Environment.NewLine;
                 Debug.WriteLine("line: " + s);
                 ret.Add(s);

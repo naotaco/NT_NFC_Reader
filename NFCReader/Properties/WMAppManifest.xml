@@ -3,8 +3,9 @@
   <DefaultLanguage xmlns="" code="en-US" />
   <Languages xmlns="">
     <Language code="ja" />
+    <Language code="en-US" />
   </Languages>
-  <App xmlns="" ProductID="{226e3b6a-c7f0-47cc-bd37-87b9e9ad8d9f}" Title="NT NFC reader" RuntimeType="Silverlight" Version="1.0.0.1" Genre="apps.normal" Author="Nao Taco" Description="This application provides a way to read NDEF data from NFC tags.&#xD;&#xA;If you feel Hex or Binary familier, this application can be your best." Publisher="naotaco apps." PublisherID="{c9e90f9a-9afc-4918-9f61-a6a63982aae1}">
+  <App xmlns="" ProductID="{226e3b6a-c7f0-47cc-bd37-87b9e9ad8d9f}" Title="NT NFC reader" RuntimeType="Silverlight" Version="1.1.0.0" Genre="apps.normal" Author="Nao Taco" Description="This application provides a way to read NDEF data from NFC tags.&#xD;&#xA;If you feel Hex or Binary familier, this application can be your best." Publisher="naotaco apps." PublisherID="{c9e90f9a-9afc-4918-9f61-a6a63982aae1}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_PROXIMITY" />
@@ -36,9 +37,8 @@
       </PrimaryToken>
     </Tokens>
     <ScreenResolutions>
-      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
-      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
       <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
     </ScreenResolutions>
   </App>
 </Deployment>
