@@ -21,16 +21,16 @@ namespace NFCReader
 
         private StringBuilder stringBuilder;
 
-        public NdefPivotItem(int number, NtNfcLib.NdefRecord record)
+        public NdefPivotItem(int number, NtNfcLib.NdefRecord record, int totalNumber)
         {
             stringBuilder = new StringBuilder();
             InitializeComponent();
-            setRecord(number, record);
+            setRecord(number, record, totalNumber);
         }
 
-        public void setRecord(int number, NtNfcLib.NdefRecord record)
+        public void setRecord(int number, NtNfcLib.NdefRecord record, int totalNumber)
         {
-            PivotItemTitle.Text = "NDEF Record #" + number;
+            PivotItemTitle.Text = "Record " + number + "/" + totalNumber;
 
             AppendToSharingTextAsTitle("-- " + PivotItemTitle.Text + " --");
 

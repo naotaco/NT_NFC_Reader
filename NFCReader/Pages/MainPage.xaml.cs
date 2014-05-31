@@ -93,12 +93,10 @@ namespace NFCReader
                         Margin = new Thickness(12, 0, 12, 0),
                     };
 
-                    var content = new NdefPivotItem(MyPivot.Items.Count, r);
+                    var content = new NdefPivotItem(MyPivot.Items.Count, r, ndefRecords.Count);
                     newPivotItem.Content = content;
 
                     stringBuilder.Append(content.getAppendString());
-
-                    // ValuesPanel.Children.Add(textBlock);
                     MyPivot.Items.Add(newPivotItem);
                 });
             }
