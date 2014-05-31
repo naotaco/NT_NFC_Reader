@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.Diagnostics;
 using NFCReader.Resources;
+using System.Text;
+using System.Windows.Media;
 
 namespace NFCReader
 {
@@ -28,10 +30,13 @@ namespace NFCReader
         private SectionStatus status;
         private const double AnimationDuration = 300;
 
+        private String Text;
+
         public Section(String title, String text)
         {
             init();
             Title.Title = title;
+            Text = text;
             var block = CreateTextBlock(text);
             block.Tap += SetTextToClipboard;
             ContentList.Children.Add(block);
@@ -41,19 +46,23 @@ namespace NFCReader
         {
             init();
             Title.Title = title;
+            var sb = new StringBuilder();
             foreach (string s in text)
             {
                 var block = CreateTextBlock(s);
                 block.Tap += SetTextToClipboard;
                 ContentList.Children.Add(block);
+                sb.Append(s);
+                sb.Append(Environment.NewLine);
             }
+            Text = sb.ToString();
         }
 
         public Section(String title, String text, SpecifiedSectionType type)
         {
             init();
             Title.Title = title;
-
+            Text = text;
             switch (type)
             {
                 case SpecifiedSectionType.NdefHeader:
@@ -62,7 +71,6 @@ namespace NFCReader
                     ContentList.Children.Add(block);
                     break;
             }
-
         }
 
         public void SetText(String s)
@@ -146,7 +154,7 @@ namespace NFCReader
                 VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
                 HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
                 Margin = new Thickness(40, 3, 40, 3),
-                
+                Background = new SolidColorBrush((App.Current.Resources["PhoneBackgroundBrush"] as SolidColorBrush).Color),                
             };
 
             block.RowDefinitions.Add(new RowDefinition()
@@ -201,10 +209,9 @@ namespace NFCReader
 
         private void SetTextToClipboard(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            Debug.WriteLine("tap: " + textBlock.Text);
-            Clipboard.SetText(textBlock.Text);
-            MessageBox.Show(AppResources.Message_Copied + System.Environment.NewLine + System.Environment.NewLine + textBlock.Text);
+            Debug.WriteLine("tap: " + Text);
+            Clipboard.SetText(Text);
+            MessageBox.Show(AppResources.Message_Copied + System.Environment.NewLine + System.Environment.NewLine + Text);
         }
     }
 }
