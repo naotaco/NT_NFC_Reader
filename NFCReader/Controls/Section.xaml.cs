@@ -14,10 +14,15 @@ namespace NFCReader
 {
     public partial class Section : UserControl
     {
-        enum SectionStatus
+        public enum SectionStatus
         {
             Closed,
             Opened,
+        };
+
+        public enum SpecifiedSectionType
+        {
+            NdefHeader,
         };
 
         private SectionStatus status;
@@ -25,14 +30,11 @@ namespace NFCReader
 
         public Section(String title, String text)
         {
-
             init();
-
-
             Title.Title = title;
             var block = CreateTextBlock(text);
             block.Tap += SetTextToClipboard;
-            TextList.Children.Add(block);
+            ContentList.Children.Add(block);
         }
 
         public Section(String title, List<String> text)
@@ -43,16 +45,32 @@ namespace NFCReader
             {
                 var block = CreateTextBlock(s);
                 block.Tap += SetTextToClipboard;
-                TextList.Children.Add(block);
+                ContentList.Children.Add(block);
             }
+        }
+
+        public Section(String title, String text, SpecifiedSectionType type)
+        {
+            init();
+            Title.Title = title;
+
+            switch (type)
+            {
+                case SpecifiedSectionType.NdefHeader:
+                    var block = CreateNdefHeaderGrid(text);
+                    block.Tap += SetTextToClipboard;
+                    ContentList.Children.Add(block);
+                    break;
+            }
+
         }
 
         public void SetText(String s)
         {
-            TextList.Children.Clear();
+            ContentList.Children.Clear();
             var block = CreateTextBlock(s);
             block.Tap += SetTextToClipboard;
-            TextList.Children.Add(block);
+            ContentList.Children.Add(block);
         }
 
         public void Open()
@@ -78,14 +96,14 @@ namespace NFCReader
         {
             status = SectionStatus.Opened;
             Title.DoOpenAnimation(duration);
-            TextList.Visibility = System.Windows.Visibility.Visible;
+            ContentList.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void Close(double duration)
         {
             status = SectionStatus.Closed;
             Title.DoCloseAnimation(duration);
-            TextList.Visibility = System.Windows.Visibility.Collapsed;
+            ContentList.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void LayoutRoot_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -108,6 +126,75 @@ namespace NFCReader
                 TextWrapping = System.Windows.TextWrapping.Wrap,
                 Margin = new Thickness(48, 6, 12, 6),
             };
+
+            return block;
+        }
+
+        private Grid CreateNdefHeaderGrid(String text)
+        {
+            string[] description = {
+                                       "MB",
+                                       "ME",
+                                       "CF",
+                                       "SR",
+                                       "IL",
+                                       "TNF",
+                                   };
+    
+            var block = new Grid()
+            {
+                VerticalAlignment = System.Windows.VerticalAlignment.Stretch,
+                HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch,
+                Margin = new Thickness(40, 3, 40, 3),
+                
+            };
+
+            block.RowDefinitions.Add(new RowDefinition()
+            {
+                Height = new GridLength(1, GridUnitType.Star),
+            });
+            block.RowDefinitions.Add(new RowDefinition()
+            {
+                Height = new GridLength(1, GridUnitType.Star),
+            });
+
+            for (int i = 0; i < 8; i++)
+            {
+                block.ColumnDefinitions.Add(new ColumnDefinition()
+                {
+                    Width = new GridLength(1, GridUnitType.Star),
+                });
+
+                var headerChar = new TextBlock()
+                {
+                    HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
+                    VerticalAlignment = System.Windows.VerticalAlignment.Center,
+                    Margin = new Thickness(0,6,0,6),
+                    Text = text.ElementAt(i).ToString(),
+                };
+                block.Children.Add(headerChar);
+                Grid.SetRow(headerChar, 1);
+                Grid.SetColumn(headerChar, i);
+            }
+            int column = 0;
+            foreach (string str in description)
+            {
+                var descriptionChar = new TextBlock()
+                {
+                    HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
+                    VerticalAlignment = System.Windows.VerticalAlignment.Center,
+                    Margin = new Thickness(0, 6, 0, 6),
+                    Text = str
+                };
+                block.Children.Add(descriptionChar);
+                Grid.SetRow(descriptionChar, 0);
+                Grid.SetColumn(descriptionChar, column);
+                if (str == "TNF")
+                {
+                    Grid.SetColumnSpan(descriptionChar, 3);
+                }
+                column++;
+            }
 
             return block;
         }

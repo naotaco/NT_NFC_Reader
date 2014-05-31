@@ -35,7 +35,7 @@ namespace NFCReader
             AppendToSharingTextAsTitle("-- " + PivotItemTitle.Text + " --");
 
             // NDEF header in binary
-            var ndefHeaderSection = CreateSection(AppResources.NDEFHeader, Convert.ToString(record.ndefHeader, 2).PadLeft(8, '0'), false, true);
+            var ndefHeaderSection = CreateNdefHeaderSection(AppResources.NDEFHeader, Convert.ToString(record.ndefHeader, 2).PadLeft(8, '0'));
             LayoutRoot.Children.Add(ndefHeaderSection);
 
             // id (if exist)
@@ -79,7 +79,7 @@ namespace NFCReader
             // type
             var typeSection = CreateSection(AppResources.Type, record.type);
             LayoutRoot.Children.Add(typeSection);
-            
+
             // payload as sony's camera's records
             if (record.SonyPayload.Count > 0)
             {
@@ -173,6 +173,25 @@ namespace NFCReader
             {
                 section.Close();
             }
+
+            AppendToSharingTextAsTitle(title);
+            AppendToSharingText(text);
+
+            return section;
+        }
+
+        private Section CreateNdefHeaderSection(string title, string text)
+        {
+            Section section;
+
+
+            section = new Section(title, text, Section.SpecifiedSectionType.NdefHeader)
+            {
+                Margin = new Thickness(0),
+                FontFamily = new System.Windows.Media.FontFamily("Courier New"),
+            };
+
+            section.Open();
 
             AppendToSharingTextAsTitle(title);
             AppendToSharingText(text);
